@@ -1,24 +1,16 @@
-.navbar-dark {
-  background-color: #e65119;
-}
+// color variables
+$abflips-color1: #e65119;
+$abflips-color2: orange;
+$abflips-color3: #17a2b8;
 
-a.nav-Link {
-  color: white;
-  padding-left: 5px;
-  padding-right: 15px;
+.navbar-dark {
+  background-color: $abflips-color1;
 }
 
 .jumbotron {
-  background-color: orange;
+  background-color: $abflips-color2;
   color: white;
   padding: 80px 0px 10px 0px;
-}
-
-img.map {
-  border: 2px;
-  border-style: solid;
-  border-color: #17a2b8;
-  margin-bottom: 20px;
 }
 
 .img-modal-carousel {
@@ -38,13 +30,13 @@ img.map {
 }
 
 .project-card-header {
-  background-color: #e65119;
+  background-color: $abflips-color1;
   color: white;
 }
 
 .modal-content,
 .card-body {
-  background-color: #17a2b8;
+  background-color: $abflips-color3;
   color: white;
   text-align: left;
 }
@@ -64,16 +56,16 @@ img.map {
   height: 300px;
 }
 
-.accordion .btn-link {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: white;
-}
-
-.accordion .card-body {
-  height: auto;
-}
-
-.accordion .card {
-  margin: 0px;
+.accordion {
+  .btn-link {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+  }
+  .card-body {
+    height: auto;
+  }
+  .card {
+    margin: 0px;
+  }
 }
