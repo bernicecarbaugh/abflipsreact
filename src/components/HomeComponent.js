@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Jumbotron,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Button,
-  Row
-} from "reactstrap";
+import { Jumbotron, Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import Carousel from "react-bootstrap/Carousel";
 
 class Home extends Component {
@@ -52,8 +45,8 @@ class Home extends Component {
         return (
           <React.Fragment>
             <ModalHeader>
-              {property.title}
-              <div className="small">{property.neighborhood}</div>
+              <div className="modal-title h4">{property.title}</div>
+              <div className="modal-title h6">{property.neighborhood}</div>
             </ModalHeader>
             <ModalBody>
               <div className="row">
@@ -109,11 +102,13 @@ class Home extends Component {
             <div className="row row-header">
               <div className="col-12 col-sm-6">
                 <p>
-                  Move over, Property Brothers! This sister team is improving
-                  greater Seattle housing stock in the Seattle metro area one
-                  home at a time. We inherited our father's passion for real
-                  estate. Take a look at the projects we've done, and contact us
-                  if you have any questions, comments or ideas for our next one!
+                  Here at ABFlips, we are passionate about taking rundown houses
+                  and turning them into homes that people want to live in. We
+                  believe in functional design, quality workmanship and a design
+                  aesthetic that marries current market trends with classicism
+                  that never goes out of style. We treat each project as if it
+                  was our own home and hope that pride of ownership comes
+                  through in every single home we do.
                 </p>
               </div>
               <div className="col-12 col-sm-6 align-self-center text-center">
@@ -127,7 +122,7 @@ class Home extends Component {
         </Jumbotron>
 
         <div className="container">
-          <Modal isOpen={this.state.isModalOpen}>
+          <Modal className="modal-lg" isOpen={this.state.isModalOpen}>
             <ModalContent
               property={
                 this.props.properties.filter(
