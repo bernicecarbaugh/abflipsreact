@@ -1,28 +1,21 @@
 import React, { Component } from "react";
 import { Jumbotron, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
-import { PROPIMAGES } from "../shared/propImages";
 import Carousel from "react-bootstrap/Carousel";
 
 class PropertyDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      propImages: PROPIMAGES
-    };
-  }
-
   render() {
     let property = this.props.property;
-    const baseUrl = "http://localhost:3000/";
-    // need to filter on propId passed
-    const renderImages = this.state.propImages.map(propImage => {
+    let currentPropImages = this.props.currentPropImages;
+    console.log(currentPropImages.length);
+
+    const renderImages = currentPropImages.map(propImage => {
       return (
         <Carousel.Item>
           <img
             key={propImage.displayOrder}
             className="d-block img-property-carousel"
-            src={baseUrl + propImage.imgUrl}
+            src={propImage.imgUrl}
             alt={propImage.caption}
           />
           <Carousel.Caption>{propImage.caption}</Carousel.Caption>

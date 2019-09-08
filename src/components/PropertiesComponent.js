@@ -35,19 +35,6 @@ function RenderProperty({ property }) {
 }
 
 class Properties extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedPropId: 0
-    };
-  }
-
-  handleMapClick = props => e => {
-    this.setState({
-      selectedPropId: props.property.propId
-    });
-  };
-
   render() {
     const propertyCards = this.props.properties.map(property => {
       return (

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Jumbotron, Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -78,9 +79,16 @@ class Home extends Component {
                 <div className="col-12 col-sm-6 align-self-center">
                   {property.description}
                   <hr />
-                  <a className="btn btn-primary mt-2 mr-2"> Read More</a>
+                  <Link to={"/properties/" + property.propId}>
+                    <Button
+                      className="btn btn-primary mt-2 mr-2"
+                      onClick={this.closeModal}
+                    >
+                      More
+                    </Button>
+                  </Link>
                   <Button
-                    className="btn btn-seconary mt-2"
+                    className="btn btn-secondary mt-2"
                     onClick={this.closeModal}
                   >
                     Close

@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { PROPERTIES } from "../shared/properties";
+import { PROPIMAGES } from "../shared/propImages";
 import Header from "./HeaderComponent";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./HomeComponent";
 import Properties from "./PropertiesComponent";
 import PropertyDetail from "./PropertyDetailComponent";
+import About from "./AboutComponent";
+import Contact from "./ContactComponent";
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      properties: PROPERTIES
+      properties: PROPERTIES,
+      propImages: PROPIMAGES
     };
   }
 
@@ -23,6 +27,9 @@ class Main extends Component {
               property => property.propId === parseInt(match.params.propId)
             )[0]
           }
+          currentPropImages={this.state.propImages.filter(
+            propImage => propImage.propId === parseInt(match.params.propId)
+          )}
         />
       );
     };
@@ -42,9 +49,8 @@ class Main extends Component {
           />
           <Route path="/properties/:propId" render={PropertyWithId} />
           />
-          <Route path="/menu/:dishId" render={<Home />} />
-          <Route path="/contactus" render={<Home />} />
-          <Route path="/aboutus" render={<Home />} />
+          <Route path="/contactus" render={<Contact />} />
+          <Route path="/aboutus" render={<About />} />
           <Redirect to="/home" />
         </Switch>
       </React.Fragment>
