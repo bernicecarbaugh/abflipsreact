@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Jumbotron, Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Jumbotron, Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
 class Accordion extends React.Component {
   render() {
-    const { title, expand, onClick } = this.props;
+    const { title, content, expand, onClick } = this.props;
 
     return (
       <div>
@@ -18,20 +18,7 @@ class Accordion extends React.Component {
           className={expand ? "content is-expanded" : "content"}
           onClick={onClick}
         >
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu
-            interdum diam. Donec interdum porttitor risus non bibendum. Maecenas
-            sollicitudin eros in quam imperdiet placerat. Cras justo purus,
-            rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec
-            elit faucibus condimentum. Donec facilisis consectetur enim sit amet
-            varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget
-            mauris. Aliquam dapibus, ante quis fringilla feugiat, mauris risus
-            condimentum massa, at elementum libero quam ac ligula. Pellentesque
-            at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu
-            dolor venenatis mauris placerat tristique eget id dolor. Quisque
-            blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec
-            elementum tincidunt.
-          </p>
+          <p>{content}</p>
         </dd>
       </div>
     );
@@ -62,9 +49,21 @@ class About extends Component {
 
   render() {
     const accordionList = [
-      { title: "First Accordion" },
-      { title: "Second Accordion" },
-      { title: "Third Accordion" }
+      {
+        title: "Functional Design",
+        content:
+          "We have a target buyer in mind for every house we do and we design everything around creating a place that works for them. Function leads our thinking…we believe that design only works when it makes sense in how our prospective buyer wants to live."
+      },
+      {
+        title: "Quality Workmanship",
+        content:
+          "We treat every project as if it were our own home and make sure it is done right. We don’t cut corners on the things you can’t see and we keep longevity in mind when picking out materials. We want our homes to last and to be places we can be proud of, now and years from now."
+      },
+      {
+        title: "Designed for Now and Forever",
+        content:
+          "We strive to be on top of what the market wants but we also always have one foot firmly grounded in the classics. Our style is modern yet traditional, hip yet classic. And we try to find that perfect balance in every home we tackle."
+      }
     ];
 
     return (
@@ -104,27 +103,35 @@ class About extends Component {
             </Breadcrumb>
           </div>
 
+          <div className="row h3">
+            <p>Our work centers on three core principles:</p>
+            <Button
+              color="primary"
+              className="ml-2"
+              onClick={this.toggleExpand(true)}
+            >
+              <span className="fa fa-plus fa-lg"> Expand All</span>
+            </Button>
+            <Button
+              color="secondary"
+              className="ml-2"
+              onClick={this.toggleExpand()}
+            >
+              <span className="fa fa-minus fa-lg"> Collapse All</span>
+            </Button>
+          </div>
+
           <div className="row">
             <div className="accordion">
               {accordionList.map((item, index) => (
                 <Accordion
                   title={item.title}
+                  content={item.content}
                   onClick={this.toggle(index + 1)}
                   expand={this.state[`block${index + 1}`]}
                 />
               ))}
             </div>
-
-            <button
-              type="button"
-              className="btn"
-              onClick={this.toggleExpand(true)}
-            >
-              Expand All
-            </button>
-            <button type="button" className="btn" onClick={this.toggleExpand()}>
-              Collapse All
-            </button>
           </div>
         </div>
       </React.Fragment>

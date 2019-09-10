@@ -81,14 +81,16 @@ class Home extends Component {
                   <hr />
                   <Link to={"/properties/" + property.propId}>
                     <Button
-                      className="btn btn-primary mt-2 mr-2"
+                      color="primary"
+                      className="btn mt-2 mr-2"
                       onClick={this.closeModal}
                     >
                       More
                     </Button>
                   </Link>
                   <Button
-                    className="btn btn-secondary mt-2"
+                    color="secondary"
+                    className="btn mt-2"
                     onClick={this.closeModal}
                   >
                     Close

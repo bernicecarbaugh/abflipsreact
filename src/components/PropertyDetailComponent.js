@@ -1,25 +1,33 @@
 import React, { Component } from "react";
 import { Jumbotron, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
-import Carousel from "react-bootstrap/Carousel";
+import ItemsCarousel from "react-items-carousel";
 
 class PropertyDetail extends Component {
+  componentWillMount() {
+    this.setState({
+      activeItemIndex: 0
+    });
+  }
+
+  changeActiveItem = activeItemIndex => {
+    this.setState({ activeItemIndex });
+  };
+
   render() {
     let property = this.props.property;
-    let currentPropImages = this.props.currentPropImages;
-    console.log(currentPropImages.length);
-
-    const renderImages = currentPropImages.map(propImage => {
+    let { activeItemIndex } = this.state;
+    let propImages = this.props.currentPropImages.map(propImage => {
       return (
-        <Carousel.Item>
-          <img
-            key={propImage.displayOrder}
-            className="d-block img-property-carousel"
-            src={propImage.imgUrl}
-            alt={propImage.caption}
-          />
-          <Carousel.Caption>{propImage.caption}</Carousel.Caption>
-        </Carousel.Item>
+        <div
+          className="div-property-detail"
+          key={propImage.displayOrder}
+          style={{
+            backgroundImage: "url(" + propImage.imgUrl + ")"
+          }}
+        >
+          <h6>{propImage.caption}</h6>
+        </div>
       );
     });
 
@@ -48,8 +56,31 @@ class PropertyDetail extends Component {
             </Breadcrumb>
           </div>
 
-          <div className="row text-align-center">
-            <Carousel>{renderImages}</Carousel>
+          <div
+            style={{
+              padding: "0 10px",
+              margin: "0 auto"
+            }}
+          >
+            <ItemsCarousel
+              // Carousel configurations
+              numberOfCards={2}
+              gutter={12}
+              slidesToScroll={2}
+              showSlither={true}
+              firstAndLastGutter={true}
+              freeScrolling={false}
+              // Active item configurations
+              requestToChangeActive={this.changeActiveItem}
+              activeItemIndex={activeItemIndex}
+              activePosition={"center"}
+              chevronWidth={60}
+              rightChevron={">"}
+              leftChevron={"<"}
+              outsideChevron={true}
+            >
+              {propImages}
+            </ItemsCarousel>
           </div>
         </div>
       </React.Fragment>

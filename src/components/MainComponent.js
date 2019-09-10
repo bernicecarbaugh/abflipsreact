@@ -48,9 +48,8 @@ class Main extends Component {
             render={() => <Properties properties={this.state.properties} />}
           />
           <Route path="/properties/:propId" render={PropertyWithId} />
-          />
-          <Route path="/contactus" render={<Contact />} />
-          <Route path="/aboutus" render={<About />} />
+          <Route path="/aboutus" render={() => <About />} />
+          <Route path="/contactus" render={() => <Contact />} />
           <Redirect to="/home" />
         </Switch>
       </React.Fragment>
